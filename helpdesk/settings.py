@@ -10,14 +10,17 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+COMMON_CONFIG_FILE='/opt/helpdesk.conf'
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+from readconf import *
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'shl+)aw*7v(nf3ttx8gdt(ch*xtzg8lr$q)ayefj2poql+x+gl'
+DJANGOSETTINGS=DjangoSettings()
+SECRET_KEY = DJANGOSETTINGS.getsecretkey()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,11 +58,16 @@ WSGI_APPLICATION = 'helpdesk.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+DBCONF=DBconfig()
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DBCONF.getdatabase(),
+        'USER': DBCONF.getdbuser(),
+	'PASSWORD': DBCONF.getdbpass(),
+        'HOST': DBCONF.getdbhost(),
+        'PORT': DBCONF.getdbport()
     }
 }
 
