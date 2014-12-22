@@ -1,6 +1,9 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyc
+# DB ve ldap bilgileri yer aldigi icin bunu ignore ediyoruz.
+helpdesk.conf
 
 # C extensions
 *.so
