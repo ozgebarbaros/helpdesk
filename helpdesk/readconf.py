@@ -41,7 +41,7 @@ class LDAPconfig:
     ldapport=None
     basedn=None
     ldappass=None
-
+    searchdn=None
     def __init__(self):
         config=ConfigParser.ConfigParser()
         config.read(COMMON_CONFIG_FILE)
@@ -50,6 +50,7 @@ class LDAPconfig:
         self.ldapport=config.get(section,"port")
         self.basedn=config.get(section,"basedn")
         self.ldappass=config.get(section,"pass")
+        self.searchdn=config.get(section,"searchdn")
 
     def getldaphost(self):
         return self.ldaphost
@@ -65,6 +66,10 @@ class LDAPconfig:
     
     def getdbpass(self):
         return self.dbpass
+    
+    def getsearchdn(self):
+        return self.searchdn
+    
 
 class DjangoSettings:
     secret_key=None

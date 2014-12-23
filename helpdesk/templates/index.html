@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="UTF-8">
+  		<title>HelpDesk - Example</title>
+  		<link href="{% static "/static/css/style.css" %}" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+  		<div id="login">
+  			<form name="login_form" class="login_form" action="." method="POST">
+    			<div class="field_container">
+    				<p>{{ state }}</p>
+      				<input type="text" name="username" value="Username">
+      				<input type="password" name="password" value="Password">
+     				<input type="submit" name="submit" class="button" value="Login"></button>
+    			</div>
+				
+	 		</form>
+   		</div>
+	</body>
+</html>
