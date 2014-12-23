@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'django.views',
     'django_auth_ldap',
     'helpdesk',
+    'userprofile',
+    
     
 )
 
