@@ -9,11 +9,9 @@
 	<body>
   		<div id="login">
   			<form name="login_form" class="login_form" action="." method="POST">
+  				{{form.as_p}}
     			<div class="field_container">
-    				<p>{{ state }}</p>
-      				<input type="text" name="username" value="Username">
-      				<input type="password" name="password" value="Password">
-     				<input type="submit" name="submit" class="button" value="Login"></button>
+     				<input type="submit" name="submit" class="button" value="Login">
     			</div>
 				
 	 		</form>
