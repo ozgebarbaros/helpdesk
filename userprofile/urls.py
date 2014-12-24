@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
+urlpatterns = patterns('userprofile.views',
     # Examples:
     # url(r'^$', 'helpdesk.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', 'userprofile.views.loginview', name="loginview"),
+    url(r'^$', 'loginview', name="loginview"),
     
 )
