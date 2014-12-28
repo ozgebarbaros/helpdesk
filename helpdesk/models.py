@@ -20,7 +20,7 @@ PRIORITY = (
 # TODO 
 #User needs to be add to Department model
 class Department(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length="11")
 
 # TODO
 # product model can extensible
