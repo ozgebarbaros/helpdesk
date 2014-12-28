@@ -7,6 +7,13 @@
   		<link href="{% static "/static/css/style.css" %}" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-basarili
+	{%if tickets%}
+		Olusturdugunuz Ticketlar ({{tickets.count}})</br>
+		{% for ticket in tickets %}
+			<label>id:{{ticket.id}} title:{{ticket.title}}</label><br/>
+		{% endfor %}
+	{% else %}
+		olusturdugunuz ticket yok
+	{% endif %}
 	</body>
 </html>

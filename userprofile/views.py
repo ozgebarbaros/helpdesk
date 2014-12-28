@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response,render
 from django.template.context import RequestContext
 
 from forms import LoginForm
+from django.core.urlresolvers import reverse
 
 def loginview(request):
     state="Kullanici adini giriniz..."
@@ -18,6 +19,6 @@ def loginview(request):
         if user is not None:
             login(request, user)
             state="Giris basarili!"
-            return render_to_response('homepage.html')
+            return HttpResponseRedirect(reverse("view_dashboard"))
         state = "Kullanici adi veya parola hatali!!"
     return render_to_response('index.html', {'form':form,'state':state})
