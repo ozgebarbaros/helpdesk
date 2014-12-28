@@ -1,8 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from django.db import models
+from datetime import datetime
+
 from django.contrib.auth.models import User
+from django.db import models
+
+
 #STATUS = (
 #    (1, ("OPEN")),
 #    (2, ("REOPEN")),
@@ -53,7 +57,7 @@ class Ticket(models.Model):
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
     title = models.CharField(max_length = 100)
     description = models.CharField(max_length = 1000)
-    created_date = models.DateTimeField(auto_now_add = True)
-    modified_date = models.DateTimeField(blank=True)
+    created_date = models.DateTimeField(default=datetime.now)
+    modified_date = models.DateTimeField(blank=True, null=True)
     comment= models.CharField(max_length = 1000)
 

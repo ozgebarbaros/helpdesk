@@ -10,13 +10,16 @@ from django.db.transaction import commit
 
 def createTicket(request):
     if request.user.is_authenticated():
-       form = CreateTicketForm()
-       status="Formu doldur"
-       if request.POST:
+        status="Formu doldur"
+        if request.POST:
+            form = CreateTicketForm(request.POST)
             try:
+               print form
                form.save(commit=True)
                status="form kaydedildi"
             except Exception as e:
                status="hata olustu"
                print e
-       return render_to_response('createticket.html',{'form':form,'status':status})
+        else:
+            form = CreateTicketForm()
+        return render_to_response('createticket.html',{'form':form,'status':status})
