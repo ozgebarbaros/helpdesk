@@ -16,7 +16,7 @@ from django.db import models
 class Status(models.Model):
     name= models.CharField(max_length="15")
     def __unicode__(self):
-       return self.name
+        return self.name
 
 #PRIORITY = (
 #    (1, "CRITICAL"),
@@ -28,14 +28,14 @@ class Status(models.Model):
 class Priority(models.Model):
     name= models.CharField(max_length="15")
     def __unicode__(self):
-       return self.name
+        return self.name
 
 # TODO 
 #User needs to be add to Department model
 class Department(models.Model):
     name = models.CharField(max_length="11")
     def __unicode__(self):
-	   return self.name
+        return self.name
 
 # TODO
 # product model can extensible
