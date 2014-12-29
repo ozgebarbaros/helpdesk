@@ -1,12 +1,5 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-	<head>
-  		<meta charset="UTF-8">
-  		<title>HelpDesk - Example</title>
-  		<link href="{% static "/static/css/style.css" %}" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
+{% extends 'default.html' %}
+{% block homecontent %}
 	{%if tickets%}
 		Olusturdugunuz Ticketlar ({{tickets.count}})</br>
 		{% for ticket in tickets %}
@@ -15,5 +8,4 @@
 	{% else %}
 		olusturdugunuz ticket yok
 	{% endif %}
-	</body>
-</html>
+{% endblock %}

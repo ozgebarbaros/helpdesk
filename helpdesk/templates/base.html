@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<html>
+<head>
+  <title>Help Desk With Django</title>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" href="{% static "/static/images/helpdesk.png"%}">
+  <link rel="stylesheet" href="{% static "/static/css/style.css"%}" type="text/css">
+  {% block head %}{% endblock %}
+</head>
+	<body>
+		<header>
+			<ul>
+				<li><a href="/mytickets">Taleplerim</a></li>
+				<li><a href="/ticketcreate">Yeni Talep Olustur</a></li>
+				<li><a href="/assigned">Islerim</a></li>
+			</ul>
+		</header>
+		<div class="homecontent">
+		{% block homecontent %}{% endblock %}
+		</div>
+		<footer role="contentinfo">
+			<p> AB2015 - Python ve Django ile Web Uygulaması gelistirme </p>
+		</footer>
+	</body>
+</html>

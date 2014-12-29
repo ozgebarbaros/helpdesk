@@ -8,7 +8,7 @@ button {
     line-height: 1;
     font-family: inherit;
 }
-html { background-color: white }
+html { background-color: #EFF8FB }
 body {
     color: black;
     font-family: "Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
@@ -29,5 +29,9 @@ body {
         box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+
+}
+header ul li{
+	
 
 }
