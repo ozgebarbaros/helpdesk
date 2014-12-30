@@ -1,5 +1,12 @@
-{% extends 'default.html' %}
-{% block homecontent %}
+{% extends 'base.html' %}
+{% block container-fluid %}
+<div class="row">
+   <div class="col-lg-12">
+       <h1 class="page-header">Taleplerim</h1>
+       <ol class="breadcrumb">
+       <li class="active">
+       <i class="fa fa-dashboard"></i> 
+
 	{%if tickets%}
 		Olusturdugunuz Ticketlar ({{tickets.count}})</br>
 		{% for ticket in tickets %}
@@ -8,4 +15,8 @@
 	{% else %}
 		olusturdugunuz ticket yok
 	{% endif %}
+        </li>
+      </ol>
+  </div>
+</div>
 {% endblock %}
