@@ -8,13 +8,10 @@
 	</head>
 	<body>
   		<div id="login">
-			{{ state }}
   			<form name="login_form" class="login_form" action={% url 'userprofile.views.loginview' %} method="POST">
-  				{{form.as_p}}
-    			<div class="field_container">
-     				<input type="submit" name="submit" class="button" value="Login">
-    			</div>
-				
+			    <p>{{ state }}</p>
+  			    {{form.as_p}}
+     			    <input type="submit" name="submit" class="button" value="Login">
 	 		</form>
    		</div>
 	</body>
