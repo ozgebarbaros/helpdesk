@@ -1,22 +1,16 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-	<head>
-  		<meta charset="UTF-8">
-  		<title>HelpDesk - Example</title>
-  		<link href="{% static "/static/css/style.css" %}" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
-  		<div id="login">
-  			{{ status }}
-  			<form name="login_form" class="login_form" method="POST">
-  				
-  				{{form.as_p}}
-    			<div class="field_container">
-     				<input type="submit" name="submit" class="button" value="Login">
-    			</div>
-				
-	 		</form>
-   		</div>
-	</body>
-</html>
+{% extends 'base.html' %}
+{% block container-fluid %}
+<div class="row">
+   <div class="col-lg-12">
+       <h1 class="page-header">Yeni Talep Olustur</h1>
+       <ol class="breadcrumb">
+       <li class="active">
+       <i class="fa fa-dashboard"></i>
+       <form name="login_form" class="login_form" method="POST">
+  	   {{form.as_p}}
+    	   <input type="submit" name="submit" class="button" value="Olustur">
+       </form>
+  </div>
+</div>
+{% endblock %}
+

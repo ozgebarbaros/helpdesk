@@ -28,7 +28,7 @@ def createTicket(request):
 @login_required
 def view_dashboard(request):
     tickets = Ticket.objects.filter(createdbyUser=request.user)
-    return render_to_response('homepage.html', {'tickets':tickets})
+    return render_to_response('mytickets.html', {'tickets':tickets})
 
 def index(request):
     if not request.user.is_authenticated():

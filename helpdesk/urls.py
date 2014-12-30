@@ -7,7 +7,7 @@ urlpatterns = patterns('helpdesk.views',
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', "index", name="index"),
     url(r'^accounts/', include('userprofile.urls')),
-    url(r'^dashboard', "view_dashboard", name="view_dashboard"),
+    url(r'^mytickets/', "view_dashboard", name="view_dashboard"),
     url(r'^ticketcreate', 'createTicket',name='createTicket'),
     url(r'^admin/', include(admin.site.urls)),
 )
