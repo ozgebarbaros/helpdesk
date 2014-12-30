@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response
 
 from helpdesk.models import Ticket
 from helpdeskforms import CreateTicketForm
+from django.core.urlresolvers import reverse
 
 
 @login_required
@@ -34,5 +35,5 @@ def index(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/accounts/login")
     else:
-        return HttpResponseRedirect("/dashboard")
+        return HttpResponseRedirect(reverse("view_dashboard"))
 
