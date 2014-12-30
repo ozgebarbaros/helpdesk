@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{% static "/static/font-awesome/css/font-awesome.min.css"%}" type="text/css">
   {% block head %}{% endblock %}
 </head>
+<<<<<<< HEAD
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -42,6 +43,19 @@
          <div class"page-wrapper">
 		<div class="container-fluid">
 		{% block container-fluid %}{% endblock %}
+=======
+	<body>
+		<header>
+			<ul>
+				<li><a href="/mytickets">Taleplerim</a></li>
+				<li><a href="/ticketcreate">Yeni Talep Olustur</a></li>
+				<li><a href="/assigned">Islerim</a></li>
+				<li><a href="/accounts/logout">Cikis</a></li>
+			</ul>
+		</header>
+		<div class="homecontent">
+		{% block homecontent %}{% endblock %}
+>>>>>>> 631106c6688f3b8300bf1efd8292cadbc76fecea
 		</div>
 		<!-- End of container-fluid --!>
 	 </div>
