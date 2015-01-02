@@ -104,7 +104,7 @@ TEMPLATE_DIRS = (
 )
 
 import ldap
-from django_auth_ldap.config import LDAPSearch
+from django_auth_ldap.config import LDAPSearch,GroupOfNamesType
 LDAPCONF=LDAPconfig()
 AUTHENTICATION_BACKENDS = ('django_auth_ldap.backend.LDAPBackend','django.contrib.auth.backends.ModelBackend')
 AUTH_LDAP_SERVER_URI = "ldap://"+LDAPCONF.getldaphost()+":"+LDAPCONF.getldapport()
@@ -116,3 +116,33 @@ AUTH_LDAP_USER_SEARCH = LDAPSearch(LDAPCONF.getsearchdn(),
 AUTH_LDAP_CONNECTION_OPTIONS = {
     ldap.OPT_REFERRALS: 0
 }
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou=groups,dc=ab2015prod,dc=com",
+ldap.SCOPE_SUBTREE, "(objectClass=groupOfNames)"
+)
+
+AUTH_LDAP_GROUP_TYPE = GroupOfNamesType(name_attr="uid")
+AUTH_LDAP_REQUIRE_GROUP = "cn=enabled,ou=groups,dc=ab2015prod,dc=com"
+
+AUTH_LDAP_USER_ATTR_MAP = {
+"first_name": "cn","last_name": "sn",
+"user_name": "uid","email":"mail"
+}
+
+AUTH_LDAP_PROFILE_ATTR_MAP = {
+"uid": "uid"
+}
+
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+"is_depadmin": "cn=depadmins,ou=groups,dc=ab2015prod,dc=com",
+"is_sysadmin": "cn=sysadmins,ou=groups,dc=ab2015prod,dc=com",
+"is_developer": "cn=developers,ou=groups,dc=ab2015prod,dc=com",
+"is_netadmin": "cn=netadmins,ou=groups,dc=ab2015prod,dc=com",
+"is_general": "cn=general,ou=groups,dc=ab2015prod,dc=com",
+}
+#This is the default, but I like to be explicit.
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+#Use LDAP group membership to calculate group permissions.
+AUTH_LDAP_FIND_GROUP_PERMS = True
+#Cache group memberships for an hour to minimize LDAP traffic
+AUTH_LDAP_CACHE_GROUPS = True
+AUTH_LDAP_GROUP_CACHE_TIMEOUT = 3600
