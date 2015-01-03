@@ -13,6 +13,13 @@ from django.db import models
 #    (3, ("RESOLVED")),
 #    (4, ("CLOSED"))
 #)
+
+class Product(models.Model):
+    #product name can be (database, internet domain, email)
+    name = models.CharField(max_length = 50)
+    def __unicode__(self):
+        return self.name
+
 class Status(models.Model):
     name= models.CharField(max_length="15")
     def __unicode__(self):
@@ -34,18 +41,16 @@ class Priority(models.Model):
 #User needs to be add to Department model
 class Department(models.Model):
     name = models.CharField(max_length="11")
+    product = models.ForeignKey(Product)
     def __unicode__(self):
         return self.name
 
 # TODO
 # product model can extensible
-class Product(models.Model):
-    #product name can be (database, internet domain, email)
-    name = models.CharField(max_length = 50)
-    department = models.ForeignKey(Department)
-    def __unicode__(self):
-        return self.name
-    
+
+class Comment(models.Model):
+    comment= models.CharField(max_length = 1000,verbose_name="Yorum")
+
 # TODO
 #resolution and assignee can be add    
 class Ticket(models.Model):
@@ -53,11 +58,11 @@ class Ticket(models.Model):
     department = models.ForeignKey(Department)
     status = models.ForeignKey(Status)
     priority = models.ForeignKey(Priority)
-    followUpUser= models.ForeignKey(User,related_name='followupuser')
+    followUpUser= models.ForeignKey(User,related_name='followupuser',blank=True,null=True)
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
-    title = models.CharField(max_length = 100)
-    description = models.CharField(max_length = 1000)
-    created_date = models.DateTimeField(default=datetime.now)
-    modified_date = models.DateTimeField(blank=True, null=True)
-    comment= models.CharField(max_length = 1000)
+    title = models.CharField(max_length = 100,verbose_name="Baslik")
+    description = models.CharField(max_length = 1000,verbose_name="Aciklama")
+    created_date = models.DateTimeField(default=datetime.now,verbose_name="Olusturulma Tarihi")
+    modified_date = models.DateTimeField(blank=True, null=True,verbose_name="Degistirilme Tarihi")
+    comment= models.ForeignKey(Comment,blank=True,null=True)
 

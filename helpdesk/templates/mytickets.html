@@ -6,14 +6,42 @@
        <ol class="breadcrumb">
        <li class="active">
        <i class="fa fa-dashboard"></i>
-
+		<div class="col-lg-6">
         {%if tickets%}
-                Olusturdugunuz Ticketlar ({{tickets.count}})
+        <h2>Oluşturduğunuz talepler ({{tickets.count}})</h2>
+                <div class="table-responsive">
+                
+                <table class="table table-bordered table-hover table-striped">
+                <thead>
+                     <tr>
+                           <th>Talep No</th>
+                           <th>Servis</th>
+                           <th>Talep Adi</th>
+                           <th>Talep Sahibi</th>
+                           <th>Atandığı Kişi</th>
+                           <th>Olusturulma Tarihi</th>
+                           <th>Öncelik</th>
+                           <th>Durumu</th>
+                     </tr>
+                </thead>
+                <tbody>
                 {% for ticket in tickets %}
-                        <label>id:{{ticket.id}} title:{{ticket.title}}</label>
+                		<tr>
+                        	<td><a href="/show/{{ticket.id}}">{{ticket.id}}</td>
+                        	<td>{{ticket.product}}</td>
+                        	<td>{{ticket.title}}</td>
+                        	<td>{{ticket.createdbyUser}}</td>
+                        	<td>{{ticket.followUpUser}}</td>
+                        	<td>{{ticket.created_date}}</td>
+                        	<td>{{ticket.priority}}</td>
+                        	<td>{{ticket.status}}</td>
+                        </tr>
                 {% endfor %}
+                </tbody>
+                </table>
+                </div>
         {% else %}
-                olusturdugunuz ticket yok
+                <h2>olusturdugunuz talep yok</h2>
         {% endif %}
         </li>
       </ol>
