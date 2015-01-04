@@ -13,10 +13,18 @@ from django.db import models
 #    (3, ("RESOLVED")),
 #    (4, ("CLOSED"))
 #)
+# TODO 
+#User needs to be add to Department model
+class Department(models.Model):
+    name = models.CharField(max_length="11")
+    depadmin = models.ForeignKey(User)
+    def __unicode__(self):
+        return self.name
 
 class Product(models.Model):
     #product name can be (database, internet domain, email)
     name = models.CharField(max_length = 50)
+    department = models.ForeignKey(Department)
     def __unicode__(self):
         return self.name
 
@@ -37,13 +45,7 @@ class Priority(models.Model):
     def __unicode__(self):
         return self.name
 
-# TODO 
-#User needs to be add to Department model
-class Department(models.Model):
-    name = models.CharField(max_length="11")
-    product = models.ForeignKey(Product)
-    def __unicode__(self):
-        return self.name
+
 
 # TODO
 # product model can extensible
@@ -58,7 +60,7 @@ class Ticket(models.Model):
     department = models.ForeignKey(Department)
     status = models.ForeignKey(Status)
     priority = models.ForeignKey(Priority)
-    followUpUser= models.ForeignKey(User,related_name='followupuser',blank=True,null=True)
+    followUpUser= models.ForeignKey(User,related_name='followupuser')
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
     title = models.CharField(max_length = 100,verbose_name="Baslik")
     description = models.CharField(max_length = 1000,verbose_name="Aciklama")

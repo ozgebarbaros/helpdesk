@@ -3,7 +3,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
-
+from django.contrib.auth.models import User, Group
 from helpdesk.models import *
 from helpdeskforms import CreateTicketForm
 from django.core.urlresolvers import reverse
@@ -15,8 +15,11 @@ def createTicket(request):
         status="Formu doldur"
         initialdata={'status':'1'}
         if request.POST:
-            initialdata['department']=Department.objects.get(product=request.POST['product']).pk
-            initialdata['createdbyUser']='1'
+            department=Product.objects.get(pk=request.POST['product']).department
+            initialdata['department']=department.pk
+            initialdata['createdbyUser']=request.user.pk
+            initialdata['followUpUser']=department.depadmin.pk
+            print initialdata['followUpUser']
             initialdata['product']=request.POST['product']
             initialdata['priority']=request.POST['priority']
             initialdata['title']=request.POST['title']
@@ -45,6 +48,7 @@ def view_dashboard(request):
 @login_required
 def showticket(request,ticket_id):
     ticket = Ticket.objects.filter(pk=ticket_id)
+    print ticket.followUpUser
     return render_to_response('ticketdetails.html',{'ticket':ticket})
 
 def index(request):
