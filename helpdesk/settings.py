@@ -50,6 +50,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+     'django.middleware.locale.LocaleMiddleware',
 #  'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -79,8 +80,14 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-LANGUAGE_CODE = 'en-us'
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, '../locale'),
+
+)
+
+LANGUAGE_CODE = 'tr'
 
 TIME_ZONE = 'UTC'
 

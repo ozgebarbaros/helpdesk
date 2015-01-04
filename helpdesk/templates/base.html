@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load i18n %}
+{% load l10n %}
 <html>
 <head>
   <title>Help Desk With Django</title>
@@ -26,16 +28,16 @@
 	    <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/mytickets"><i class="fa fa-fw fa-dashboard"></i>Taleplerim</a>
+                        <a href="/mytickets"><i class="fa fa-fw fa-dashboard"></i> {% trans "My Tickets"%}</a>
                     </li>
                     <li>
-                        <a href="/ticketcreate"><i class="fa fa-fw fa-bar-chart-o"></i> Yeni Talep Olustur</a>
+                        <a href="/ticketcreate"><i class="fa fa-fw fa-bar-chart-o"></i> {% trans "Create New Ticket"%}</a>
                     </li>
                     <li>
-                        <a href="/assigned"><i class="fa fa-fw fa-table"></i>Islerim</a>
+                        <a href="/assigned"><i class="fa fa-fw fa-table"></i> {% trans "Assigned Issues"%}</a>
                     </li>
 		    <li>
-                        <a href="/accounts/logout"><i class="fa fa-fw fa-table"></i>Logout</a>
+                        <a href="/accounts/logout"><i class="fa fa-fw fa-table"></i> {% trans "Logout"%}</a>
                     </li>
                 </ul>
             </div>

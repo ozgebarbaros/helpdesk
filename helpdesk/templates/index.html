@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load i18n %}
+{% load l10n %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,8 +12,10 @@
   		<div id="login">
   			<form name="login_form" class="login_form" action={% url 'userprofile.views.loginview' %} method="POST">
 			    <p>{{ state }}</p>
-  			    {{form.as_p}}
-     			    <input type="submit" name="submit" class="button" value="Login">
+			    <table>
+  			    {{form.as_table}}
+  			    </table>
+     			    <input type="submit" name="submit" class="button" value="{% trans "Login"%}">
 	 		</form>
    		</div>
 	</body>

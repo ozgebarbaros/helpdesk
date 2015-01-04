@@ -3,6 +3,7 @@
 
 from datetime import datetime
 
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -16,12 +17,12 @@ from django.db import models
 
 class Product(models.Model):
     #product name can be (database, internet domain, email)
-    name = models.CharField(max_length = 50)
+    name = models.CharField(verbose_name=_("Product"), max_length = 50)
     def __unicode__(self):
         return self.name
 
 class Status(models.Model):
-    name= models.CharField(max_length="15")
+    name= models.CharField(verbose_name=_("Status"), max_length="15")
     def __unicode__(self):
         return self.name
 
@@ -33,14 +34,14 @@ class Status(models.Model):
 #)
 
 class Priority(models.Model):
-    name= models.CharField(max_length="15")
+    name= models.CharField(verbose_name=_("Priority"), max_length="15")
     def __unicode__(self):
         return self.name
 
 # TODO 
 #User needs to be add to Department model
 class Department(models.Model):
-    name = models.CharField(max_length="11")
+    name = models.CharField(verbose_name=_("Deparment"), max_length="11")
     product = models.ForeignKey(Product)
     def __unicode__(self):
         return self.name
@@ -49,7 +50,7 @@ class Department(models.Model):
 # product model can extensible
 
 class Comment(models.Model):
-    comment= models.CharField(max_length = 1000,verbose_name="Yorum")
+    comment= models.CharField(verbose_name=_("Comment"), max_length = 1000)
 
 # TODO
 #resolution and assignee can be add    
@@ -60,9 +61,9 @@ class Ticket(models.Model):
     priority = models.ForeignKey(Priority)
     followUpUser= models.ForeignKey(User,related_name='followupuser',blank=True,null=True)
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
-    title = models.CharField(max_length = 100,verbose_name="Baslik")
-    description = models.CharField(max_length = 1000,verbose_name="Aciklama")
-    created_date = models.DateTimeField(default=datetime.now,verbose_name="Olusturulma Tarihi")
-    modified_date = models.DateTimeField(blank=True, null=True,verbose_name="Degistirilme Tarihi")
-    comment= models.ForeignKey(Comment,blank=True,null=True)
+    title = models.CharField(verbose_name=_("Title"), max_length = 100)
+    description = models.CharField(verbose_name=_("Description"), max_length = 1000)
+    created_date = models.DateTimeField(verbose_name=_("Created Date"), default=datetime.now)
+    modified_date = models.DateTimeField(verbose_name=_("Modified Date"), blank=True, null=True)
+    comment= models.ForeignKey(Comment, blank=True,null=True)
 

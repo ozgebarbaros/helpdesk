@@ -9,10 +9,11 @@ from helpdesk.models import *
 from helpdeskforms import CreateTicketForm
 
 
+
 @login_required
 def createTicket(request):
     if request.user.is_authenticated():
-        status="Formu doldur"
+        status = _("Fill Form")
         initialdata={'status':'1'}
         if request.POST:
             form=CreateTicketForm(initialdata)
@@ -27,12 +28,12 @@ def createTicket(request):
                 print form.data    
                 try:
                     form.save(commit=True)
-                    status="form kaydedildi"
+                    status = _("Form Saved")
                 except Exception as e:
-                    status="hata olustu"
+                    status = _("Error Occured")
                     print e
             else:
-                print "form kaydedilemedi"
+                print _("Form Couldn't Be Saved")
         else:
             form = CreateTicketForm()
         return render_to_response('createticket.html', {'form':form,'status':status})

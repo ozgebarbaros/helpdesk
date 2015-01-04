@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block container-fluid %}
+{% load i18n %}
+{% load l10n %}
 <div class="row">
    <div class="col-lg-12">
-       <h1 class="page-header">Yeni Talep Olustur</h1>
+       <h1 class="page-header">{% trans "Create New Ticket"%}</h1>
        <ol class="breadcrumb">
        <li class="active">
        <i class="fa fa-dashboard"></i>
