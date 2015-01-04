@@ -4,17 +4,12 @@
 from django.forms import ModelForm
 from django import forms
 from helpdesk.models import Ticket
+from django.db.backends.sqlite3.introspection import field_size_re
 
 class CreateTicketForm(ModelForm):
     class Meta:
         model = Ticket
-        exclude={'followUpUser','comment','modified_date'}
-        widgets={
-            'department':forms.HiddenInput(),
-            'status':forms.HiddenInput(),
-            'createdbyUser':forms.HiddenInput(),
-            'created_date':forms.HiddenInput(),
-        }
+        fields = ['department', 'status', 'createdbyUser', 'created_date']
         
         
 class UpdateTicketForm(ModelForm):
