@@ -14,15 +14,23 @@ from django.db import models
 #    (3, ("RESOLVED")),
 #    (4, ("CLOSED"))
 #)
+# TODO 
+#User needs to be add to Department model
+class Department(models.Model):
+    name = models.CharField(max_length="11")
+    depadmin = models.ForeignKey(User)
+    def __unicode__(self):
+        return self.name
 
 class Product(models.Model):
     #product name can be (database, internet domain, email)
-    name = models.CharField(verbose_name=_("Product"), max_length = 50)
+    name = models.CharField(max_length = 50)
+    department = models.ForeignKey(Department)
     def __unicode__(self):
         return self.name
 
 class Status(models.Model):
-    name= models.CharField(verbose_name=_("Status"), max_length="15")
+    name= models.CharField(max_length="15")
     def __unicode__(self):
         return self.name
 
@@ -34,36 +42,30 @@ class Status(models.Model):
 #)
 
 class Priority(models.Model):
-    name= models.CharField(verbose_name=_("Priority"), max_length="15")
+    name= models.CharField(max_length="15")
     def __unicode__(self):
         return self.name
 
-# TODO 
-#User needs to be add to Department model
-class Department(models.Model):
-    name = models.CharField(verbose_name=_("Deparment"), max_length="11")
-    product = models.ForeignKey(Product)
-    def __unicode__(self):
-        return self.name
+
 
 # TODO
 # product model can extensible
 
 class Comment(models.Model):
-    comment= models.CharField(verbose_name=_("Comment"), max_length = 1000)
+    comment= models.CharField(max_length = 1000,verbose_name="Yorum")
 
 # TODO
 #resolution and assignee can be add    
 class Ticket(models.Model):
-    product = models.ForeignKey(Product)
-    department = models.ForeignKey(Department)
-    status = models.ForeignKey(Status)
-    priority = models.ForeignKey(Priority)
-    followUpUser= models.ForeignKey(User,related_name='followupuser',blank=True,null=True)
+    product = models.ForeignKey(Product,verbose_name='Servis')
+    department = models.ForeignKey(Department,verbose_name='Bolum')
+    status = models.ForeignKey(Status,verbose_name='Durum')
+    priority = models.ForeignKey(Priority,verbose_name='Oncelik')
+    followUpUser= models.ForeignKey(User,related_name='followupuser')
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
-    title = models.CharField(verbose_name=_("Title"), max_length = 100)
-    description = models.CharField(verbose_name=_("Description"), max_length = 1000)
-    created_date = models.DateTimeField(verbose_name=_("Created Date"), default=datetime.now)
-    modified_date = models.DateTimeField(verbose_name=_("Modified Date"), blank=True, null=True)
-    comment= models.ForeignKey(Comment, blank=True,null=True)
+    title = models.CharField(max_length = 100,verbose_name="Baslik")
+    description = models.CharField(max_length = 1000,verbose_name="Aciklama")
+    created_date = models.DateTimeField(default=datetime.now,verbose_name="Olusturulma Tarihi")
+    modified_date = models.DateTimeField(blank=True, null=True,verbose_name="Degistirilme Tarihi")
+    comment= models.ForeignKey(Comment,blank=True,null=True)
 
