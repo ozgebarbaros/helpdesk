@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-05 01:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\helpdesk\models.py:20
+msgid "Product"
+msgstr "Ürün"
+
+#: .\helpdesk\models.py:25
+msgid "Status"
+msgstr "Durum"
+
+#: .\helpdesk\models.py:37
+msgid "Priority"
+msgstr "Öncelik"
+
+#: .\helpdesk\models.py:44
+msgid "Deparment"
+msgstr "Bölüm"
+
+#: .\helpdesk\models.py:53
+msgid "Comment"
+msgstr "Yorum"
+
+#: .\helpdesk\models.py:64
+msgid "Title"
+msgstr "Başlık"
+
+#: .\helpdesk\models.py:65
+msgid "Description"
+msgstr "Açıklama"
+
+#: .\helpdesk\models.py:66
+msgid "Created Date"
+msgstr "Oluşturulma Tarihi"
+
+#: .\helpdesk\models.py:67
+msgid "Modified Date"
+msgstr "Düzenlenme Tarihi"
+
+#: .\helpdesk\templates\base.html:31 .\helpdesk\templates\mytickets.html:7
+#: .\helpdesk\templates\ticketdetails.html:7
+msgid "My Tickets"
+msgstr "Taleplerim"
+
+#: .\helpdesk\templates\base.html:34 .\helpdesk\templates\createticket.html:7
+msgid "Create New Ticket"
+msgstr "Yeni Talep Oluştur"
+
+#: .\helpdesk\templates\base.html:37
+msgid "Assigned Issues"
+msgstr "Atanan İşler"
+
+#: .\helpdesk\templates\base.html:40
+msgid "Logout"
+msgstr "Çıkış"
+
+#: .\helpdesk\templates\index.html:18
+msgid "Login"
+msgstr "Giriş"
+
+#: .\helpdesk\templates\mytickets.html:13
+msgid "Tickets You Created"
+msgstr "Oluşturduğunuz Talepler"
+
+#: .\helpdesk\templates\mytickets.html:19
+msgid "Ticket No"
+msgstr "Talep No"
+
+#: .\helpdesk\templates\mytickets.html:46
+msgid "No any ticket you created"
+msgstr "Oluşturduğunuz talep yok"
+
+#: .\helpdesk\views.py:16
+msgid "Fill Form"
+msgstr "Formu Doldur"
+
+#: .\helpdesk\views.py:31
+msgid "Form Saved"
+msgstr "Form Kaydedildi"
+
+#: .\helpdesk\views.py:33
+msgid "Error Occured"
+msgstr "Hata Oluştu"
+
+#: .\helpdesk\views.py:36
+msgid "Form Couldn't Be Saved"
+msgstr "Form Kaydedilemedi"
+
+#: .\userprofile\forms.py:7
+msgid "Username"
+msgstr "Kullanıcı Adı"
+
+#: .\userprofile\forms.py:8
+msgid "Password"
+msgstr "Parola"
+
+#: .\userprofile\views.py:12
+msgid "Enter Username and Password..."
+msgstr "Kullanıcı Adı ve Parolasını Giriniz"
+
+#: .\userprofile\views.py:21
+msgid "Login is Successful"
+msgstr "Giriş Başarılı"
+
+#: .\userprofile\views.py:23
+msgid "Invalid Username or Password!!"
+msgstr "Geçersiz Kullanıcıs Adı ve Parola"
