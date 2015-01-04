@@ -56,10 +56,10 @@ class Comment(models.Model):
 # TODO
 #resolution and assignee can be add    
 class Ticket(models.Model):
-    product = models.ForeignKey(Product)
-    department = models.ForeignKey(Department)
-    status = models.ForeignKey(Status)
-    priority = models.ForeignKey(Priority)
+    product = models.ForeignKey(Product,verbose_name='Servis')
+    department = models.ForeignKey(Department,verbose_name='Bolum')
+    status = models.ForeignKey(Status,verbose_name='Durum')
+    priority = models.ForeignKey(Priority,verbose_name='Oncelik')
     followUpUser= models.ForeignKey(User,related_name='followupuser')
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
     title = models.CharField(max_length = 100,verbose_name="Baslik")

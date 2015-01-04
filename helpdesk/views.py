@@ -19,14 +19,12 @@ def createTicket(request):
             initialdata['department']=department.pk
             initialdata['createdbyUser']=request.user.pk
             initialdata['followUpUser']=department.depadmin.pk
-            print initialdata['followUpUser']
             initialdata['product']=request.POST['product']
             initialdata['priority']=request.POST['priority']
             initialdata['title']=request.POST['title']
             initialdata['description']=request.POST['description']
             initialdata['created_date']=datetime.now()
-            form=CreateTicketForm(initialdata)
-            print form.data    
+            form=CreateTicketForm(initialdata) 
             if form.is_valid():
                 try:
                     form.save(commit=True)
