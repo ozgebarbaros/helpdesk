@@ -7,7 +7,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User, Group
 from helpdesk.models import *
-from helpdeskforms import CreateTicketForm
+from helpdeskforms import CreateTicketForm, CommentForm
 
 
 
@@ -49,6 +49,25 @@ def view_dashboard(request):
 def showticket(request,ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     return render_to_response('ticketdetails.html',{'ticket':ticket})
+
+@login_required
+def updateticket(request,ticket_id):
+    ticket = Ticket.objects.get(pk=ticket_id)
+    comments = Comment.objects.filter(ticket=ticket_id)
+    initialdata={'ticket':ticket_id}
+    if request.POST:
+        initialdata['comment']=request.POST['comment']
+        form=CommentForm(initialdata)
+        if form.is_valid():
+            form.save(commit=True)
+    else:
+        form=CommentForm()
+    return render_to_response('updateticket.html',{'ticket':ticket,'comments':comments,'form':form})
+
+@login_required
+def assignedtome(request):
+    tickets = Ticket.objects.filter(followUpUser=request.user.pk)
+    return render_to_response('assignedtome.html',{'tickets':tickets})
 
 def index(request):
     if not request.user.is_authenticated():

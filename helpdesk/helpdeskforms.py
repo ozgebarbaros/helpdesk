@@ -19,11 +19,6 @@ class CreateTicketForm(ModelForm):
 		         'followUpUser':forms.HiddenInput(),
                  'description':forms.Textarea(),
             }
-             
-class UpdateTicketForm(ModelForm):
-    class Meta:
-        model = Ticket
-        exclude = {}
 
 class CommentForm(ModelForm):
     class Meta:
