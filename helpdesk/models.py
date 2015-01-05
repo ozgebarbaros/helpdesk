@@ -17,20 +17,20 @@ from django.db import models
 # TODO 
 #User needs to be add to Department model
 class Department(models.Model):
-    name = models.CharField(max_length="11")
+    name = models.CharField(_("Department"), max_length="11")
     depadmin = models.ForeignKey(User)
     def __unicode__(self):
         return self.name
 
 class Product(models.Model):
     #product name can be (database, internet domain, email)
-    name = models.CharField(max_length = 50)
+    name = models.CharField(verbose_name=_("Product"), max_length = 50)
     department = models.ForeignKey(Department)
     def __unicode__(self):
         return self.name
 
 class Status(models.Model):
-    name= models.CharField(max_length="15")
+    name= models.CharField(verbose_name=_("Status"), max_length="15")
     def __unicode__(self):
         return self.name
 
@@ -46,13 +46,6 @@ class Priority(models.Model):
     def __unicode__(self):
         return self.name
 
-# TODO 
-#User needs to be add to Department model
-class Department(models.Model):
-    name = models.CharField(verbose_name=_("Deparment"), max_length="11")
-    product = models.ForeignKey(Product)
-    def __unicode__(self):
-        return self.name
 
 # TODO
 # product model can extensible
@@ -67,7 +60,7 @@ class Ticket(models.Model):
     department = models.ForeignKey(Department)
     status = models.ForeignKey(Status)
     priority = models.ForeignKey(Priority)
-    followUpUser= models.ForeignKey(User,related_name='followupuser',blank=True,null=True)
+    followUpUser= models.ForeignKey(User,related_name='followupuser', blank=True, null=True)
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser')
     title = models.CharField(verbose_name=_("Title"), max_length = 100)
     description = models.CharField(verbose_name=_("Description"), max_length = 1000)

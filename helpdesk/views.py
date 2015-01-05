@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseRedirect
@@ -16,16 +17,16 @@ def createTicket(request):
         status = _("Fill Form")
         initialdata={'status':'1'}
         if request.POST:
+            initialdata['department']=Department.objects.get(product=request.POST['product']).pk
+            initialdata['createdbyUser']=request.user.id
+            initialdata['product']=request.POST['product']
+            initialdata['priority']=request.POST['priority']
+            initialdata['title']=request.POST['title']
+            initialdata['description']=request.POST['description']
+            initialdata['created_date']=datetime.now()
             form=CreateTicketForm(initialdata)
+            print form.data  
             if form.is_valid():
-                initialdata['department']=Department.objects.get(product=request.POST['product']).pk
-                initialdata['createdbyUser']='1'
-                initialdata['product']=request.POST['product']
-                initialdata['priority']=request.POST['priority']
-                initialdata['title']=request.POST['title']
-                initialdata['description']=request.POST['description']
-                initialdata['created_date']=datetime.now()
-                print form.data    
                 try:
                     form.save(commit=True)
                     status = _("Form Saved")

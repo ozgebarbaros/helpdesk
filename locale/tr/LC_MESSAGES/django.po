@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-05 01:04+0200\n"
+"POT-Creation-Date: 2015-01-05 02:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,38 +18,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\helpdesk\models.py:20
+#, fuzzy
+#| msgid "Deparment"
+msgid "Department"
+msgstr "Bölüm"
+
+#: .\helpdesk\models.py:27
 msgid "Product"
 msgstr "Ürün"
 
-#: .\helpdesk\models.py:25
+#: .\helpdesk\models.py:33 .\helpdesk\templates\mytickets.html:26
 msgid "Status"
 msgstr "Durum"
 
-#: .\helpdesk\models.py:37
+#: .\helpdesk\models.py:45 .\helpdesk\templates\mytickets.html:25
 msgid "Priority"
 msgstr "Öncelik"
 
-#: .\helpdesk\models.py:44
-msgid "Deparment"
-msgstr "Bölüm"
-
-#: .\helpdesk\models.py:53
+#: .\helpdesk\models.py:54
 msgid "Comment"
 msgstr "Yorum"
 
-#: .\helpdesk\models.py:64
+#: .\helpdesk\models.py:65
 msgid "Title"
 msgstr "Başlık"
 
-#: .\helpdesk\models.py:65
+#: .\helpdesk\models.py:66
 msgid "Description"
 msgstr "Açıklama"
 
-#: .\helpdesk\models.py:66
+#: .\helpdesk\models.py:67 .\helpdesk\templates\mytickets.html:24
 msgid "Created Date"
 msgstr "Oluşturulma Tarihi"
 
-#: .\helpdesk\models.py:67
+#: .\helpdesk\models.py:68
 msgid "Modified Date"
 msgstr "Düzenlenme Tarihi"
 
@@ -82,23 +84,35 @@ msgstr "Oluşturduğunuz Talepler"
 msgid "Ticket No"
 msgstr "Talep No"
 
+#: .\helpdesk\templates\mytickets.html:20
+msgid "Service"
+msgstr "Servis"
+
+#: .\helpdesk\templates\mytickets.html:21
+msgid "Ticket Name"
+msgstr "Talep Adı"
+
+#: .\helpdesk\templates\mytickets.html:22
+msgid "Ticket Owner"
+msgstr "Talep Sahibi"
+
 #: .\helpdesk\templates\mytickets.html:46
 msgid "No any ticket you created"
 msgstr "Oluşturduğunuz talep yok"
 
-#: .\helpdesk\views.py:16
+#: .\helpdesk\views.py:17
 msgid "Fill Form"
 msgstr "Formu Doldur"
 
-#: .\helpdesk\views.py:31
+#: .\helpdesk\views.py:32
 msgid "Form Saved"
 msgstr "Form Kaydedildi"
 
-#: .\helpdesk\views.py:33
+#: .\helpdesk\views.py:34
 msgid "Error Occured"
 msgstr "Hata Oluştu"
 
-#: .\helpdesk\views.py:36
+#: .\helpdesk\views.py:37
 msgid "Form Couldn't Be Saved"
 msgstr "Form Kaydedilemedi"
 
@@ -120,4 +134,4 @@ msgstr "Giriş Başarılı"
 
 #: .\userprofile\views.py:23
 msgid "Invalid Username or Password!!"
-msgstr "Geçersiz Kullanıcıs Adı ve Parola"
+msgstr "Geçersiz Kullanıcı Adı ve Parola"
