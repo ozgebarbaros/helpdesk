@@ -4,7 +4,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from helpdesk.models import Ticket
+from helpdesk.models import Ticket,Comment
 
 
 class CreateTicketForm(ModelForm):
@@ -16,9 +16,20 @@ class CreateTicketForm(ModelForm):
                  'status':forms.HiddenInput(),
                  'createdbyUser':forms.HiddenInput(),
                  'created_date':forms.HiddenInput(),
-		 'followUpUser':forms.HiddenInput(),
-            }        
+		         'followUpUser':forms.HiddenInput(),
+                 'description':forms.Textarea(),
+            }
+             
 class UpdateTicketForm(ModelForm):
     class Meta:
         model = Ticket
         exclude = {}
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        exclude = {}
+        widgets={
+            'comment':forms.Textarea(),
+            'ticket':forms.HiddenInput(),
+        }

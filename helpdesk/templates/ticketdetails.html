@@ -4,13 +4,21 @@
 {% load l10n %}
 <div class="row">
    <div class="col-lg-12">
-       <h1 class="page-header">{% trans "My Tickets"%}</h1>
-       <ol class="breadcrumb">
-       <li class="active">
-       <i class="fa fa-dashboard"></i>
-		
-  	</li>
-   </ol>
-   </div
+       <h1 class="page-header">{% trans "Ticket No:" %} {{ ticket.pk }}</h1>
+   </div>
+</div>
+<div class="row">
+	<div id="showticket" style="with:800px;">
+    	<table>
+    		<tr><th style="font-size:20px;">{% trans "Product:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.product }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Title:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.title }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Description:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.description }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Status:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.status }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Priority:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.priority }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Assigned to:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.followUpUser }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Created by:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.createdbyUser }}</td></tr>
+    		<tr><th style="font-size:20px;">{% trans "Creation Date:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.created_date }}</td></tr>
+    	</table>
+	</div>
 </div>
 {% endblock %}
