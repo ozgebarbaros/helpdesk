@@ -14,32 +14,38 @@ from helpdeskforms import CreateTicketForm, UpdateFollowUpForm, UpdateStatusForm
 @login_required
 def createTicket(request):
     if request.user.is_authenticated():
-        status = _("Fill Form")
+        alert = _("Fill Form")
+        alertcolor=""
+        form = CreateTicketForm()
         initialdata={'status':'1'}
         if request.POST:
-            department=Product.objects.get(pk=request.POST['product']).department
-            initialdata['department']=department.pk
-            initialdata['createdbyUser']=request.user.id
-            initialdata['product']=request.POST['product']
-            initialdata['priority']=request.POST['priority']
-            initialdata['title']=request.POST['title']
-            initialdata['description']=request.POST['description']
-            initialdata['created_date']=datetime.now()
-            form=CreateTicketForm(initialdata)
-            if form.is_valid():
-                try:
-                    new_ticket=form.save(commit=True)
-                    new_followup=FollowUp(ticket=new_ticket,followup_user=request.user,assigned_user=department.depadmin,followup_date=initialdata['created_date'],followupnote=_('This issue assigned to your department'))
-                    new_followup.save()
-                    status = _("Form Saved")
-                except Exception as e:
-                    status = _("Error Occured")
-                    print e
+	    if request.POST['product']!='': 
+            	department=Product.objects.get(pk=request.POST['product']).department
+            	initialdata['department']=department.pk
+            	initialdata['createdbyUser']=request.user.id
+            	initialdata['product']=request.POST['product']
+            	initialdata['priority']=request.POST['priority']
+            	initialdata['title']=request.POST['title']
+            	initialdata['description']=request.POST['description']
+            	initialdata['created_date']=datetime.now()
+            	form=CreateTicketForm(initialdata)
+            	if form.is_valid():
+                    try:
+                    	new_ticket=form.save(commit=True)
+                    	new_followup=FollowUp(ticket=new_ticket,followup_user=request.user,assigned_user=department.depadmin,followup_date=initialdata['created_date'],followupnote=_('This issue assigned to your department'))
+                    	new_followup.save()
+                    	alert = _("Form Saved")
+                        alertcolor="green"
+                    except Exception as e:
+                    	alert = _("Error Occured")
+                        alertcolor = "red"
+                   	print e
+            	else:
+                    print _("Form Couldn't Be Saved")
             else:
-                print _("Form Couldn't Be Saved")
-        else:
-            form = CreateTicketForm()
-        return render_to_response('createticket.html', {'form':form,'status':status})
+                alert=_("Product field couldn't be empty. Please select a product")
+                alertcolor="red"
+        return render_to_response('createticket.html', {'form':form,'status':alert,'color':alertcolor})
 
 @login_required
 def view_dashboard(request):

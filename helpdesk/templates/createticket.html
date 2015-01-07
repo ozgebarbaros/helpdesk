@@ -5,7 +5,7 @@
 <div class="row">
    <div class="col-lg-12">
        <h1 class="page-header">{% trans "Create New Ticket"%}</h1>
-       {{ status }}
+       <p style="color:{{ color }};">{{ status }}</p>
        <form name="form-group" class="login_form" method="POST">
        		<table>
   	   			{{form.as_table}}
