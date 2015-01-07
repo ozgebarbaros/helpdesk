@@ -15,12 +15,15 @@
     		<tr><th style="font-size:20px;">{% trans "Description:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.description }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Status:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.status }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Priority:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.priority }}</td></tr>
-    		<tr><th style="font-size:20px;">{% trans "Assigned to:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.followUpUser }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Created by:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.createdbyUser }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Creation Date:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.created_date }}</td></tr>
-    		{%if comments%}
-    			{% for comment in comments %}
-    				<tr><th style="font-size:20px;">{% trans "Comment:" %}</th><td>{{ comment.comment }}<td></tr>
+	</table>
+	<table>
+    		{%if followups%}
+				<thead><th style="font-size:20px;">{% trans "User" %}</th><th style="font-size:20px;">{% trans "Comment Date" %}</th><th style="font-size:20px;">{% trans "Comment" %}</th><th style="font-size:20px;">{% trans "Assigned To" %}</th></thead>
+				<tbody>
+    			{% for followup in followups %}
+    				<tr><td style="font-size:16px;padding:5px;">{{ followup.followup_user }}</td><td style="font-size:16px;padding:5px;">{{ followup.followup_date }}</td><td style="font-size:16px;padding:5px;">{{ followup.followupnote }}</td><td style="font-size:16px;padding:5px;">{{ followup.assigned_user }}</td></tr>
     			{% endfor %}
     		{% endif %}
     		<tr>
@@ -31,6 +34,8 @@
     	    		<input type="submit" name="submit" class="btn btn-default" value="Olustur">
        			</form>
        		</tr>
+				</tbody>
+
     	</table>
 	</div>
 </div>

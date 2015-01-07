@@ -34,16 +34,14 @@ class Ticket(models.Model):
     department = models.ForeignKey(Department,verbose_name=_("Department"))
     status = models.ForeignKey(Status,verbose_name=_("Status"))
     priority = models.ForeignKey(Priority,verbose_name=_("Priority"))
-    followUpUser= models.ForeignKey(User,related_name='followupuser',verbose_name=_("Assigned User"))
     createdbyUser= models.ForeignKey(User,related_name='createdbyuser',verbose_name=_("Creator"))
     title = models.CharField(verbose_name=_("Title"), max_length = 100)
     description = models.CharField(verbose_name=_("Description"), max_length = 1000)
     created_date = models.DateTimeField(verbose_name=_("Created Date"), default=datetime.now)
-    modified_date = models.DateTimeField(verbose_name=_("Modified Date"), blank=True, null=True)
 
-class Comment(models.Model):
-    comment= models.CharField(verbose_name=_("Comment"), max_length = 1000)
+class FollowUp(models.Model):
+    followupnote= models.CharField(verbose_name=_("Comment"), max_length = 1000)
     ticket= models.ForeignKey(Ticket)
-
-
-
+    followup_date = models.DateTimeField(verbose_name=_("Modified Date"), blank=True, null=True)
+    followup_user= models.ForeignKey(User,related_name='followup_user',verbose_name=_("Comment by"))
+    assigned_user= models.ForeignKey(User,related_name='Assigned User',verbose_name=_("Assign to"))

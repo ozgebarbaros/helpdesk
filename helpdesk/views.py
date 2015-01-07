@@ -7,7 +7,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User, Group
 from helpdesk.models import *
-from helpdeskforms import CreateTicketForm, CommentForm
+from helpdeskforms import CreateTicketForm, UpdateFollowUpForm 
 
 
 
@@ -20,7 +20,6 @@ def createTicket(request):
             department=Product.objects.get(pk=request.POST['product']).department
             initialdata['department']=department.pk
             initialdata['createdbyUser']=request.user.id
-            initialdata['followUpUser']=department.depadmin.pk
             initialdata['product']=request.POST['product']
             initialdata['priority']=request.POST['priority']
             initialdata['title']=request.POST['title']
@@ -29,7 +28,9 @@ def createTicket(request):
             form=CreateTicketForm(initialdata)
             if form.is_valid():
                 try:
-                    form.save(commit=True)
+                    new_ticket=form.save(commit=True)
+                    new_followup=FollowUp(ticket=new_ticket,followup_user=request.user,assigned_user=department.depadmin,followup_date=initialdata['created_date'],followupnote=_('This issue assigned to your department'))
+                    new_followup.save()
                     status = _("Form Saved")
                 except Exception as e:
                     status = _("Error Occured")
@@ -53,20 +54,31 @@ def showticket(request,ticket_id):
 @login_required
 def updateticket(request,ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    comments = Comment.objects.filter(ticket=ticket_id)
+    followups = FollowUp.objects.filter(ticket=ticket_id)
     initialdata={'ticket':ticket_id}
     if request.POST:
-        initialdata['comment']=request.POST['comment']
-        form=CommentForm(initialdata)
+        initialdata['followupnote']=request.POST['followupnote']
+        initialdata['followup_date']=datetime.now()
+        initialdata['followup_user']=request.user.id
+        if request.POST['assigned_user'] != '0':
+	    initialdata['assigned_user']=request.POST['assigned_user']
+        else:
+            initialdata['assigned_user']=request.user.id
+        form=UpdateFollowUpForm(initialdata)
         if form.is_valid():
             form.save(commit=True)
     else:
-        form=CommentForm()
-    return render_to_response('updateticket.html',{'ticket':ticket,'comments':comments,'form':form})
+        form=UpdateFollowUpForm()
+    return render_to_response('updateticket.html',{'ticket':ticket,'followups':followups,'form':form})
 
 @login_required
 def assignedtome(request):
-    tickets = Ticket.objects.filter(followUpUser=request.user.pk)
+    print request.user.pk
+    followups = FollowUp.objects.filter(assigned_user=request.user.pk)
+    tickets=[]
+    for followup in followups:
+        tickets.append(followup.ticket)
+    print tickets
     return render_to_response('assignedtome.html',{'tickets':tickets})
 
 def index(request):

@@ -2,29 +2,31 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.forms import ModelForm
-
-from helpdesk.models import Ticket,Comment
+from django.forms import ModelForm, ModelChoiceField
+from django.contrib.auth.models import User
+from helpdesk.models import Ticket,FollowUp
 
 
 class CreateTicketForm(ModelForm):
     class Meta:
         model = Ticket
-        exclude={'comment','modified_date'}
+        exclude={}
         widgets={
                  'department':forms.HiddenInput(),
                  'status':forms.HiddenInput(),
                  'createdbyUser':forms.HiddenInput(),
                  'created_date':forms.HiddenInput(),
-		         'followUpUser':forms.HiddenInput(),
-                 'description':forms.Textarea(),
+		 'description':forms.Textarea(),
             }
 
-class CommentForm(ModelForm):
+class UpdateFollowUpForm(ModelForm):
+    assigned_user = ModelChoiceField(queryset=User.objects.none(),label="* Bölüm") #Jquery ile uretilecek burasi
     class Meta:
-        model = Comment
+        model = FollowUp
         exclude = {}
         widgets={
-            'comment':forms.Textarea(),
+            'followupnote':forms.Textarea(),
             'ticket':forms.HiddenInput(),
+	    'followup_date':forms.HiddenInput(),
+            'followup_user':forms.HiddenInput(),
         }
