@@ -60,7 +60,7 @@ def updateticket(request,ticket_id):
         initialdata['followupnote']=request.POST['followupnote']
         initialdata['followup_date']=datetime.now()
         initialdata['followup_user']=request.user.id
-        if request.POST['assigned_user'] != '0':
+        if request.POST['assigned_user'] != '':
 	    initialdata['assigned_user']=request.POST['assigned_user']
         else:
             initialdata['assigned_user']=request.user.id
@@ -73,13 +73,11 @@ def updateticket(request,ticket_id):
 
 @login_required
 def assignedtome(request):
-    print request.user.pk
     followups = FollowUp.objects.filter(assigned_user=request.user.pk)
     tickets=[]
     for followup in followups:
         tickets.append(followup.ticket)
-    print tickets
-    return render_to_response('assignedtome.html',{'tickets':tickets})
+    return render_to_response('assignedtome.html',{'tickets':set(tickets)})
 
 def index(request):
     if not request.user.is_authenticated():

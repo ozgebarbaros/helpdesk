@@ -20,7 +20,6 @@ class CreateTicketForm(ModelForm):
             }
 
 class UpdateFollowUpForm(ModelForm):
-    assigned_user = ModelChoiceField(queryset=User.objects.none(),label="* Bölüm") #Jquery ile uretilecek burasi
     class Meta:
         model = FollowUp
         exclude = {}
