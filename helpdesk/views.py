@@ -7,7 +7,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User, Group
 from helpdesk.models import *
-from helpdeskforms import CreateTicketForm, UpdateFollowUpForm 
+from helpdeskforms import CreateTicketForm, UpdateFollowUpForm, UpdateStatusForm
 
 
 
@@ -56,6 +56,7 @@ def updateticket(request,ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     followups = FollowUp.objects.filter(ticket=ticket_id)
     initialdata={'ticket':ticket_id}
+    upstatform=UpdateStatusForm()
     if request.POST:
         initialdata['followupnote']=request.POST['followupnote']
         initialdata['followup_date']=datetime.now()
@@ -67,9 +68,11 @@ def updateticket(request,ticket_id):
         form=UpdateFollowUpForm(initialdata)
         if form.is_valid():
             form.save(commit=True)
+            ticket.status=Status.objects.get(pk=request.POST['status'])
+            ticket.save()
     else:
         form=UpdateFollowUpForm()
-    return render_to_response('updateticket.html',{'ticket':ticket,'followups':followups,'form':form})
+    return render_to_response('updateticket.html',{'ticket':ticket,'followups':followups,'form':form,'upstatform':upstatform})
 
 @login_required
 def assignedtome(request):

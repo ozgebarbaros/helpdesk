@@ -29,3 +29,7 @@ class UpdateFollowUpForm(ModelForm):
 	    'followup_date':forms.HiddenInput(),
             'followup_user':forms.HiddenInput(),
         }
+class UpdateStatusForm(ModelForm):
+    class Meta:
+        model = Ticket
+        fields= {'status'}
