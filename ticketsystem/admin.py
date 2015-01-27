@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from helpdesk.models import Department, Product, Status, Priority
+from ticketsystem.models import Department, Product, Status, Priority
 
 class DepartmentAdmin(admin.ModelAdmin):
     pass

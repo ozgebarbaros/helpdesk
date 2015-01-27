@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 
 urlpatterns = patterns('userprofile.views',
     # Examples:
@@ -6,4 +6,5 @@ urlpatterns = patterns('userprofile.views',
     # url(r'^blog/', include('blog.urls')),
     url(r'^login', 'loginview', name="loginview"),
     url(r'^logout', 'logout', name="logout"),
+
 )

@@ -43,8 +43,7 @@ INSTALLED_APPS = (
     'django_auth_ldap',
     'helpdesk',
     'userprofile',
-    
-    
+    'ticketsystem',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,10 +79,9 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_PATH, '../locale'),
+    os.path.join(BASE_DIR, '/locale'),
 
 )
 
@@ -103,11 +101,11 @@ USE_TZ = True
 
 STATIC_URL = os.path.join(BASE_DIR, '/static/')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'helpdesk/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'helpdesk/templates/'),
+    os.path.join(BASE_DIR, 'templates/'),
 )
 
 import ldap

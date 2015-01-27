@@ -4,7 +4,7 @@
 from django import forms
 from django.forms import ModelForm, ModelChoiceField
 from django.contrib.auth.models import User
-from helpdesk.models import Ticket,FollowUp
+from ticketsystem.models import Ticket,FollowUp
 
 
 class CreateTicketForm(ModelForm):
