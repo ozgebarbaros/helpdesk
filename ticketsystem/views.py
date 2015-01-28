@@ -9,7 +9,9 @@ from django.contrib.auth.models import User, Group
 from ticketsystem.models import *
 from helpdeskforms import CreateTicketForm, UpdateFollowUpForm, UpdateStatusForm
 
-
+import logging
+logger = logging.getLogger(__name__)
+ 
 
 @login_required
 def createTicket(request):
@@ -34,6 +36,7 @@ def createTicket(request):
                     	new_ticket=form.save(commit=True)
                     	new_followup=FollowUp(ticket=new_ticket,followup_user=request.user,assigned_user=department.depadmin,followup_date=initialdata['created_date'],followupnote=_('This issue assigned to your department'))
                     	new_followup.save()
+                        logger.debug("create ticket form has been saved")
                     	alert = _("Form Saved")
                         alertcolor="green"
                     except Exception as e:
@@ -50,6 +53,7 @@ def createTicket(request):
 @login_required
 def view_dashboard(request):
     tickets = Ticket.objects.filter(createdbyUser=request.user)
+    logger.debug(str(len(tickets)) + " ticket found")
     return render_to_response('mytickets.html', {'tickets':tickets})
 
 @login_required
