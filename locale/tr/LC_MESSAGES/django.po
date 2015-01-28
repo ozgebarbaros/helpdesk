@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-05 02:45+0200\n"
+"POT-Creation-Date: 2015-01-29 00:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,121 +17,201 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\helpdesk\models.py:20
-#, fuzzy
-#| msgid "Deparment"
-msgid "Department"
-msgstr "Bölüm"
-
-#: .\helpdesk\models.py:27
-msgid "Product"
-msgstr "Ürün"
-
-#: .\helpdesk\models.py:33 .\helpdesk\templates\mytickets.html:26
-msgid "Status"
-msgstr "Durum"
-
-#: .\helpdesk\models.py:45 .\helpdesk\templates\mytickets.html:25
-msgid "Priority"
-msgstr "Öncelik"
-
-#: .\helpdesk\models.py:54
-msgid "Comment"
-msgstr "Yorum"
-
-#: .\helpdesk\models.py:65
-msgid "Title"
-msgstr "Başlık"
-
-#: .\helpdesk\models.py:66
-msgid "Description"
-msgstr "Açıklama"
-
-#: .\helpdesk\models.py:67 .\helpdesk\templates\mytickets.html:24
-msgid "Created Date"
-msgstr "Oluşturulma Tarihi"
-
-#: .\helpdesk\models.py:68
-msgid "Modified Date"
-msgstr "Düzenlenme Tarihi"
-
-#: .\helpdesk\templates\base.html:31 .\helpdesk\templates\mytickets.html:7
-#: .\helpdesk\templates\ticketdetails.html:7
-msgid "My Tickets"
-msgstr "Taleplerim"
-
-#: .\helpdesk\templates\base.html:34 .\helpdesk\templates\createticket.html:7
-msgid "Create New Ticket"
-msgstr "Yeni Talep Oluştur"
-
-#: .\helpdesk\templates\base.html:37
-msgid "Assigned Issues"
+#: .\templates\assignedtome.html:7
+msgid "Assigned Tickets"
 msgstr "Atanan İşler"
 
-#: .\helpdesk\templates\base.html:40
-msgid "Logout"
-msgstr "Çıkış"
+#: .\templates\assignedtome.html:13
+msgid "Tickets Assigned To You: "
+msgstr ""
 
-#: .\helpdesk\templates\index.html:18
-msgid "Login"
-msgstr "Giriş"
-
-#: .\helpdesk\templates\mytickets.html:13
-msgid "Tickets You Created"
-msgstr "Oluşturduğunuz Talepler"
-
-#: .\helpdesk\templates\mytickets.html:19
+#: .\templates\assignedtome.html:19 .\templates\mytickets.html:19
 msgid "Ticket No"
 msgstr "Talep No"
 
-#: .\helpdesk\templates\mytickets.html:20
+#: .\templates\assignedtome.html:20 .\templates\mytickets.html:20
 msgid "Service"
 msgstr "Servis"
 
-#: .\helpdesk\templates\mytickets.html:21
+#: .\templates\assignedtome.html:21 .\templates\mytickets.html:21
 msgid "Ticket Name"
 msgstr "Talep Adı"
 
-#: .\helpdesk\templates\mytickets.html:22
+#: .\templates\assignedtome.html:22 .\templates\mytickets.html:22
 msgid "Ticket Owner"
 msgstr "Talep Sahibi"
 
-#: .\helpdesk\templates\mytickets.html:46
+#: .\templates\assignedtome.html:23 .\templates\mytickets.html:23
+#: .\ticketsystem\models.py:40
+msgid "Created Date"
+msgstr "Oluşturulma Tarihi"
+
+#: .\templates\assignedtome.html:24 .\templates\mytickets.html:24
+#: .\ticketsystem\models.py:28 .\ticketsystem\models.py:36
+msgid "Priority"
+msgstr "Öncelik"
+
+#: .\templates\assignedtome.html:25 .\templates\mytickets.html:25
+#: .\ticketsystem\models.py:23 .\ticketsystem\models.py:35
+msgid "Status"
+msgstr "Durum"
+
+#: .\templates\assignedtome.html:44
+msgid "There is no ticket assigned to you."
+msgstr "Sana atanan talep yok."
+
+#: .\templates\base.html:30 .\templates\mytickets.html:7
+msgid "My Tickets"
+msgstr "Taleplerim"
+
+#: .\templates\base.html:33 .\templates\createticket.html:7
+msgid "Create New Ticket"
+msgstr "Yeni Talep Oluştur"
+
+#: .\templates\base.html:36
+msgid "Assigned Issues"
+msgstr "Atanan İşler"
+
+#: .\templates\base.html:39
+msgid "Logout"
+msgstr "Çıkış"
+
+#: .\templates\index.html:18
+msgid "Login"
+msgstr "Giriş"
+
+#: .\templates\mytickets.html:13
+msgid "Tickets You Created"
+msgstr "Oluşturduğun Talepler"
+
+#: .\templates\mytickets.html:44
 msgid "No any ticket you created"
-msgstr "Oluşturduğunuz talep yok"
+msgstr "Oluşturduğun talep yok"
 
-#: .\helpdesk\views.py:17
+#: .\templates\ticketdetails.html:7
+msgid "Ticket No:"
+msgstr "Talep No:"
+
+#: .\templates\ticketdetails.html:13 .\templates\updateticket.html:13
+msgid "Product:"
+msgstr "Ürün:"
+
+#: .\templates\ticketdetails.html:14 .\templates\updateticket.html:14
+msgid "Title:"
+msgstr "Başlık:"
+
+#: .\templates\ticketdetails.html:15 .\templates\updateticket.html:15
+msgid "Description:"
+msgstr "Açıklama:"
+
+#: .\templates\ticketdetails.html:16 .\templates\updateticket.html:16
+msgid "Status:"
+msgstr "Durum:"
+
+#: .\templates\ticketdetails.html:17 .\templates\updateticket.html:17
+msgid "Priority:"
+msgstr "Öncelik:"
+
+#: .\templates\ticketdetails.html:18 .\templates\updateticket.html:18
+msgid "Created by:"
+msgstr "Oluşturan:"
+
+#: .\templates\ticketdetails.html:19 .\templates\updateticket.html:19
+msgid "Creation Date:"
+msgstr "Oluşturulma Tarihi:"
+
+#: .\templates\updateticket.html:7
+msgid "Update Ticket: "
+msgstr "Talep Güncelle: "
+
+#: .\templates\updateticket.html:23
+msgid "User"
+msgstr "Kullanıcı"
+
+#: .\templates\updateticket.html:23
+msgid "Comment Date"
+msgstr "Yorum Tarihi"
+
+#: .\templates\updateticket.html:23 .\ticketsystem\models.py:43
+msgid "Comment"
+msgstr "Yorum"
+
+#: .\templates\updateticket.html:23
+msgid "Assigned To"
+msgstr "Atanan"
+
+#: .\ticketsystem\models.py:10 .\ticketsystem\models.py:34
+msgid "Department"
+msgstr "Bölüm"
+
+#: .\ticketsystem\models.py:17 .\ticketsystem\models.py:33
+msgid "Product"
+msgstr "Ürün"
+
+#: .\ticketsystem\models.py:37
+msgid "Creator"
+msgstr "Oluşturan"
+
+#: .\ticketsystem\models.py:38
+msgid "Title"
+msgstr "Başlık"
+
+#: .\ticketsystem\models.py:39
+msgid "Description"
+msgstr "Açıklama"
+
+#: .\ticketsystem\models.py:45
+msgid "Modified Date"
+msgstr "Güncelleme Tarihi"
+
+#: .\ticketsystem\models.py:46
+msgid "Comment by"
+msgstr "Yorumlayan"
+
+#: .\ticketsystem\models.py:47
+msgid "Assign to"
+msgstr "Atanacak"
+
+#: .\ticketsystem\views.py:17
 msgid "Fill Form"
-msgstr "Formu Doldur"
+msgstr "Formu Doldurun"
 
-#: .\helpdesk\views.py:32
+#: .\ticketsystem\views.py:35
+msgid "This issue assigned to your department"
+msgstr "Bu talep bölümünüze atandı"
+
+#: .\ticketsystem\views.py:37
 msgid "Form Saved"
 msgstr "Form Kaydedildi"
 
-#: .\helpdesk\views.py:34
+#: .\ticketsystem\views.py:40
 msgid "Error Occured"
 msgstr "Hata Oluştu"
 
-#: .\helpdesk\views.py:37
+#: .\ticketsystem\views.py:44
 msgid "Form Couldn't Be Saved"
 msgstr "Form Kaydedilemedi"
 
+#: .\ticketsystem\views.py:46
+msgid "Product field couldn't be empty. Please select a product"
+msgstr "Ürün alanı boş olamaz. Lütfen bir ürün seçiniz"
+
 #: .\userprofile\forms.py:7
 msgid "Username"
-msgstr "Kullanıcı Adı"
+msgstr "Kullanıcı adı"
 
 #: .\userprofile\forms.py:8
 msgid "Password"
 msgstr "Parola"
 
-#: .\userprofile\views.py:12
+#: .\userprofile\views.py:13
 msgid "Enter Username and Password..."
-msgstr "Kullanıcı Adı ve Parolasını Giriniz"
+msgstr "Kullanıcı adı ve Parola giriniz..."
 
-#: .\userprofile\views.py:21
+#: .\userprofile\views.py:22
 msgid "Login is Successful"
 msgstr "Giriş Başarılı"
 
-#: .\userprofile\views.py:23
+#: .\userprofile\views.py:24
 msgid "Invalid Username or Password!!"
-msgstr "Geçersiz Kullanıcı Adı ve Parola"
+msgstr "Geçersiz Kullanıcı adı ve Parola"
