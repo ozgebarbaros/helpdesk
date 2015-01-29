@@ -4,6 +4,7 @@ __pycache__/
 *.pyc
 # DB ve ldap bilgileri yer aldigi icin bunu ignore ediyoruz.
 helpdesk.conf
+helpdesk.log
 .settings/
 .gitignore
 # C extensions

@@ -167,7 +167,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': BASE_DIR + './helpdesk.log',
+            'filename': os.path.join(BASE_DIR,'./helpdesk.log'),
             'formatter': 'simple'
         },
     },
