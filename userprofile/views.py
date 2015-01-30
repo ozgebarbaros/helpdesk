@@ -22,7 +22,7 @@ def loginview(request):
             state = _("Login is Successful")
             return HttpResponseRedirect("/ticketsystem/mytickets")
         state = _("Invalid Username or Password!!")
-    return render_to_response('index.html', {'form':form,'state':state})
+    return render_to_response('userprofile/index.html', {'form':form,'state':state})
 
 def logout(request):
     user_logout(request)

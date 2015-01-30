@@ -48,18 +48,18 @@ def createTicket(request):
             else:
                 alert=_("Product field couldn't be empty. Please select a product")
                 alertcolor="red"
-        return render_to_response('createticket.html', {'form':form,'status':alert,'color':alertcolor})
+        return render_to_response('ticketsystem/createticket.html', {'form':form,'status':alert,'color':alertcolor})
 
 @login_required
 def view_dashboard(request):
     tickets = Ticket.objects.filter(createdbyUser=request.user)
     logger.debug(str(len(tickets)) + " ticket found")
-    return render_to_response('mytickets.html', {'tickets':tickets})
+    return render_to_response('ticketsystem/mytickets.html', {'tickets':tickets})
 
 @login_required
 def showticket(request,ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    return render_to_response('ticketdetails.html',{'ticket':ticket})
+    return render_to_response('ticketsystem/ticketdetails.html',{'ticket':ticket})
 
 @login_required
 def updateticket(request,ticket_id):
@@ -82,7 +82,7 @@ def updateticket(request,ticket_id):
             ticket.save()
     else:
         form=UpdateFollowUpForm()
-    return render_to_response('updateticket.html',{'ticket':ticket,'followups':followups,'form':form,'upstatform':upstatform})
+    return render_to_response('ticketsystem/updateticket.html',{'ticket':ticket,'followups':followups,'form':form,'upstatform':upstatform})
 
 @login_required
 def assignedtome(request):
@@ -90,12 +90,5 @@ def assignedtome(request):
     tickets=[]
     for followup in followups:
         tickets.append(followup.ticket)
-    return render_to_response('assignedtome.html',{'tickets':set(tickets)})
-
-#def index(request):
-#    if not request.user.is_authenticated():
-#        return HttpResponseRedirect("/accounts/login")
-#    else:
-#	print request.user
-#        return HttpResponseRedirect(reverse("view_dashboard"),{'user':request.user})
+    return render_to_response('ticketsystem/assignedtome.html',{'tickets':set(tickets)})
 

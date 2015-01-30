@@ -10,7 +10,7 @@
 	</head>
 	<body>
   		<div id="login">
-  			<form name="login_form" class="login_form" action={% url 'userprofile.views.loginview' %} method="POST">
+  			<form name="login_form" class="login_form" action={% url 'loginview' %} method="POST">
 			    <p>{{ state }}</p>
 			    <table>
   			    {{form.as_table}}

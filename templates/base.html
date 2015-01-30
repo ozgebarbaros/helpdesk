@@ -27,16 +27,16 @@
 	   		<div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/ticketsystem/mytickets">{% trans "My Tickets"%}</a>
+                        <a href="{% url 'view_dashboard' %}">{% trans "My Tickets"%}</a>
                     </li>
                     <li>
-                        <a href="/ticketsystem/ticketcreate">{% trans "Create New Ticket"%}</a>
+                        <a href="{% url 'createTicket' %}">{% trans "Create New Ticket"%}</a>
                     </li>
                     <li>
-                        <a href="/ticketsystem/assigned"> {% trans "Assigned Issues"%}</a>
+                        <a href="{% url 'assignedtome' %}"> {% trans "Assigned Issues"%}</a>
                     </li>
 		    		<li>
-                        <a href="/accounts/logout">{% trans "Logout"%}</a>
+                        <a href="{% url 'logout' %}">{% trans "Logout"%}</a>
                     </li>
                 </ul>
             </div>
