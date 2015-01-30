@@ -59,7 +59,8 @@ def view_dashboard(request):
 @login_required
 def showticket(request,ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    return render_to_response('ticketsystem/ticketdetails.html',{'ticket':ticket})
+    followups = FollowUp.objects.filter(ticket=ticket_id)
+    return render_to_response('ticketsystem/ticketdetails.html',{'ticket':ticket,'followups':followups})
 
 @login_required
 def updateticket(request,ticket_id):

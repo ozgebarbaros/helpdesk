@@ -17,7 +17,18 @@
     		<tr><th style="font-size:20px;">{% trans "Priority:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.priority }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Created by:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.createdbyUser }}</td></tr>
     		<tr><th style="font-size:20px;">{% trans "Creation Date:" %}</th><td style="font-size:16px;padding:5px;">{{ ticket.created_date }}</td></tr>
-    	</table>
+    	
+	</table>
+	<table style="padding:10px">
+                {%if followups%}
+                                <thead><th style="font-size:20px;padding:10px;">{% trans "User" %}</th><th style="font-size:20px;padding:10px;">{% trans "Comment Date" %}</th><th style="font-size:20px;padding:10px;">{% trans "Comment" %}</th><th style="font-size:20px;padding:5px;">{% trans "Assigned To" %}</th></thead>
+                                <tbody>
+                        {% for followup in followups %}
+                                <tr><td style="font-size:18px;padding:10px;">{{ followup.followup_user }}</td><td style="font-size:18px;padding:10px;">{{ followup.followup_date }}</td><td style="font-size:18px;padding:10px;">{{ followup.followupnote }}</td><td style="font-size:18px;padding:10px;">{{ followup.assigned_user }}</td></tr>
+                        {% endfor %}
+                {% endif %}
+	</table>
+
 	</div>
 </div>
 {% endblock %}
